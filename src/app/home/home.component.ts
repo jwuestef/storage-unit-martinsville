@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ContentService } from '../services/content.service';
+import { AuthService } from '../services/auth.service';
 import { Image } from '../services/image';
 
 
@@ -10,8 +11,7 @@ import { Image } from '../services/image';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-    isAdmin = true;
+export class HomeComponent {
     homeParagraphUpdated = false;
     homeCurrentUpload: Image;
     homeImage1Src: string;
@@ -23,10 +23,7 @@ export class HomeComponent implements OnInit {
 
 
 
-    constructor(public contentService: ContentService) {
-        // Check to see if this is the logged in administrator
-        // this.isAdmin = this.as.isAuthed();
-
+    constructor(private contentService: ContentService, public authService: AuthService) {
         // Pull content from Firebase and load it into the page content
         this.contentService.getPageContent('homePage').then(pageContent => {
             // Set the paragraph contents
@@ -34,26 +31,13 @@ export class HomeComponent implements OnInit {
             // Set the image properties
             this.homeImage1Src = pageContent['homeImageSrc'];
             this.homeImage1Desc = pageContent['homeImageDesc'];
-            if (this.isAdmin) {
+            if (this.authService.isAdmin) {
                 // If they're an admin, set the content of paragraph editors
                 setTimeout(() => {
                     tinymce.get('homeParagraphEditor').setContent(pageContent['homeParagraph']);
                 }, 100)
             }
         })
-
-    }
-
-
-
-    ngOnInit() {
-        // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-        // Sets black border around selected view in navbar
-        // document.getElementById('chocoBtn').setAttribute('style', 'border: none;');
-        // document.getElementById('contactBtn').setAttribute('style', 'border: none;');
-        // document.getElementById('aboutBtn').setAttribute('style', 'border: none;');
-        // document.getElementById('shopBtn').setAttribute('style', 'border: none;');
-        // document.getElementById('homeBtn').setAttribute('style', 'outline: 4px solid black; outline-offset:-4px;');
     }
 
 
