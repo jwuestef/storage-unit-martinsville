@@ -1,0 +1,13 @@
+
+
+
+// When the screen is over 992px wide, the navbar items should be centered on the page
+@media only screen and (min-width: 992px) {
+    #navbarNavAltMarkup {
+        display: flex;
+        justify-content: space-evenly; 
+    }
+    .nav-item {
+        margin: 0 5vw;
+    }
+}

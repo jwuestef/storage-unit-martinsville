@@ -1,0 +1,61 @@
+<div class="container-fluid">
+
+
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <p id="homeParagraph"></p>
+        </div>
+
+        <div class="col-md-6">
+            <img *ngIf="homeImage1Src" [src]="homeImage1Src" [alt]="homeImage1Desc" [title]="homeImage1Desc" style="width: 100%;">
+        </div>
+
+    </div>
+
+
+
+    <div *ngIf="true" class="row adminSection">
+
+        <div class="col-md-6 textUpdateForm">
+            <texteditor [elementId]="'homeParagraphEditor'"></texteditor>
+            <br>
+            <button class="btn btn-md updateTextButton" (click)="saveHomeParagraph()">Update</button>
+            <!-- After successful update, show confirmation -->
+            <span class="alert-success updated" *ngIf="homeParagraphUpdated">
+                <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+            </span>
+        </div>
+
+        <div class="col-md-6 imageUploadingForm" *ngIf="homeImage1Src">
+            <label for="homeImage1Existing">Existing Image:</label>
+            <br>
+            <img *ngIf="homeImage1Src" id="homeImage1Existing" style="width: 100px; height: auto" [src]="homeImage1Src" [alt]="homeImage1Desc" [title]="homeImage1Desc">
+            <br>
+            <br>
+            <label for="homeImage1FileInput">Image to upload: <em style="color: red;">*required</em></label>
+            <br>
+            <input type="file" id="homeImage1FileInput" (change)="homeDetectImage1($event)">
+            <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+            <label for="homeImage1Desc">Description of image: <em style="color: red;">*required</em></label>
+            <br>
+            <input type="text" id="homeImage1Desc" placeholder="Description" [(ngModel)]="homeImage1Desc">
+            <br>
+            <br>
+            <button class="btn btn-md uploadImageButton" (click)="homeUploadImage1()">Upload</button>
+            <span class="alert-error" *ngIf="homeUploadingImage1Error !== ''">
+                <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ homeUploadingImage1Error }}</strong>
+            </span>
+            <!-- Progress bar -->
+            <div *ngIf="homeUploadingImage1">
+                <br>
+                <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
