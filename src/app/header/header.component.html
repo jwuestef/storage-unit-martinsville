@@ -1,7 +1,8 @@
 
 <div class="row" style="margin: 0;">
-    <img src="https://www.spacecentrestorage.com/assets/uploads/Slideshow/SCS-Com-SelfStorage.jpg" alt="placeholer" style="max-height: 200px; margin: 0 auto">
+    <img *ngIf="headerImageSrc" [src]="headerImageSrc" [alt]="headerImageDesc" [title]="headerImageDesc" style="max-height: 150px; margin: 0 auto">
 </div>
+
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,3 +19,67 @@
         </div>
     </div>
 </nav>
+
+
+
+<div *ngIf="authService.isAdmin" class="row adminSection">
+
+    <div class="col-md-6">
+        <div class="imageUploadingForm" *ngIf="headerImageSrc">
+            <label for="headerImageExisting">Existing Image:</label>
+            <br>
+            <img *ngIf="headerImageSrc" id="headerImageExisting" style="width: 100px; height: auto" [src]="headerImageSrc" [alt]="headerImageDesc" [title]="headerImageDesc">
+            <br>
+            <br>
+            <label for="headerImageFileInput">Image to upload: <em style="color: red;">*required</em></label>
+            <br>
+            <input type="file" id="headerImageFileInput" (change)="headerDetectImage($event)">
+            <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+            <label for="headerImageDesc">Description of image: <em style="color: red;">*required</em></label>
+            <br>
+            <input type="text" id="headerImageDesc" placeholder="Description" [(ngModel)]="headerImageDesc">
+            <br>
+            <br>
+            <button class="btn btn-md uploadImageButton" (click)="headerUploadImage()">Upload</button>
+            <span class="alert-error" *ngIf="headerUploadingImageError !== ''">
+                <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ headerUploadingImageError }}</strong>
+            </span>
+            <!-- Progress bar -->
+            <div *ngIf="headerUploadingImage">
+                <br>
+                <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="imageUploadingForm" *ngIf="backgroundImageSrc">
+            <label for="backgroundImageExisting">Existing Image:</label>
+            <br>
+            <img *ngIf="backgroundImageSrc" id="backgroundImageExisting" style="width: 100px; height: auto" [src]="backgroundImageSrc" [alt]="backgroundImageDesc" [title]="backgroundImageDesc">
+            <br>
+            <br>
+            <label for="backgroundImageFileInput">Image to upload: <em style="color: red;">*required</em></label>
+            <br>
+            <input type="file" id="backgroundImageFileInput" (change)="backgroundDetectImage($event)">
+            <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+            <label for="backgroundImageDesc">Description of image: <em style="color: red;">*required</em></label>
+            <br>
+            <input type="text" id="backgroundImageDesc" placeholder="Description" [(ngModel)]="backgroundImageDesc">
+            <br>
+            <br>
+            <button class="btn btn-md uploadImageButton" (click)="backgroundUploadImage()">Upload</button>
+            <span class="alert-error" *ngIf="backgroundUploadingImageError !== ''">
+                <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ backgroundUploadingImageError }}</strong>
+            </span>
+            <!-- Progress bar -->
+            <div *ngIf="backgroundUploadingImage">
+                <br>
+                <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+            </div>
+        </div>
+    </div>
+
+</div>
