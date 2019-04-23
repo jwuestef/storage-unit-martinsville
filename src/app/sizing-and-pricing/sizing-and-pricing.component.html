@@ -1,3 +1,245 @@
-<p>
-  sizing-and-pricing works!
-</p>
+<div class="container-fluid">
+
+
+
+    <h1 style="text-align: center;">Sizes and Pricing</h1>
+    
+    <p id="sapParagraph" style="text-align: center;"></p>
+
+
+
+    <div class="row">
+
+        <div class="col-md-6" *ngIf="sapImage1Src && sapImage1Desc">
+            <h3>{{ sapImage1Desc }}</h3>
+            <img [src]="sapImage1Src" [alt]="sapImage1Desc" [title]="sapImage1Desc" style="max-width: 100%;">
+        </div>
+
+        <div class="col-md-6" *ngIf="sapImage2Src && sapImage2Desc">
+            <h3>{{ sapImage2Desc }}</h3>
+            <img [src]="sapImage2Src" [alt]="sapImage2Desc" [title]="sapImage2Desc" style="max-width: 100%;">
+        </div>
+
+        <div class="col-md-6" *ngIf="sapImage3Src && sapImage3Desc">
+            <h3>{{ sapImage3Desc }}</h3>
+            <img [src]="sapImage3Src" [alt]="sapImage3Desc" [title]="sapImage3Desc" style="max-width: 100%;">
+        </div>
+
+        <div class="col-md-6" *ngIf="sapImage4Src && sapImage4Desc">
+            <h3>{{ sapImage4Desc }}</h3>
+            <img [src]="sapImage4Src" [alt]="sapImage4Desc" [title]="sapImage4Desc" style="max-width: 100%;">
+        </div>
+
+        <div class="col-md-6" *ngIf="sapImage5Src && sapImage5Desc">
+            <h3>{{ sapImage5Desc }}</h3>
+            <img [src]="sapImage5Src" [alt]="sapImage5Desc" [title]="sapImage5Desc" style="max-width: 100%;">
+        </div>
+
+        <div class="col-md-6" *ngIf="sapImage6Src && sapImage6Desc">
+            <h3>{{ sapImage6Desc }}</h3>
+            <img [src]="sapImage6Src" [alt]="sapImage6Desc" [title]="sapImage6Desc" style="max-width: 100%;">
+        </div>
+
+    </div>
+
+
+
+    <div *ngIf="authService.isAdmin" class="row adminSection">
+
+        <div class="col-md-12">
+            <div class="textUpdateForm">
+                <texteditor [elementId]="'sapParagraphEditor'"></texteditor>
+                <br>
+                <button class="btn btn-md updateTextButton" (click)="saveSapParagraph()">Update</button>
+                <!-- After successful update, show confirmation -->
+                <span class="alert-success updated" *ngIf="sapParagraphUpdated">
+                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="imageUploadingForm" *ngIf="sapImage1Src">
+                <label for="sapImage1Existing">Existing Image:</label>
+                <br>
+                <img *ngIf="sapImage1Src" id="sapImage1Existing" style="width: 100px; height: auto" [src]="sapImage1Src" [alt]="sapImage1Desc" [title]="sapImage1Desc">
+                <br>
+                <br>
+                <label for="sapImage1FileInput">Image to upload:</label>
+                <br>
+                <input type="file" id="sapImage1FileInput" (change)="sapDetectImage1($event)">
+                <br>
+                <br>
+                <label for="sapImage1Desc">Description of image: <em>*delete to hide image</em></label>
+                <br>
+                <input type="text" id="sapImage1Desc" placeholder="Description" [(ngModel)]="sapImage1Desc">
+                <br>
+                <br>
+                <button class="btn btn-md uploadImageButton" (click)="sapUploadImage1()">Update</button>
+                <span class="alert-error" *ngIf="sapUploadingImage1Error !== ''">
+                    <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ sapUploadingImage1Error }}</strong>
+                </span>
+                <!-- Progress bar -->
+                <div *ngIf="sapUploadingImage1">
+                    <br>
+                    <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                    <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="imageUploadingForm" *ngIf="sapImage2Src">
+                <label for="sapImage2Existing">Existing Image:</label>
+                <br>
+                <img *ngIf="sapImage2Src" id="sapImage2Existing" style="width: 100px; height: auto" [src]="sapImage2Src" [alt]="sapImage2Desc" [title]="sapImage2Desc">
+                <br>
+                <br>
+                <label for="sapImage2FileInput">Image to upload:</label>
+                <br>
+                <input type="file" id="sapImage2FileInput" (change)="sapDetectImage2($event)">
+                <br>
+                <br>
+                <label for="sapImage2Desc">Description of image: <em>*delete to hide image</em></label>
+                <br>
+                <input type="text" id="sapImage2Desc" placeholder="Description" [(ngModel)]="sapImage2Desc">
+                <br>
+                <br>
+                <button class="btn btn-md uploadImageButton" (click)="sapUploadImage2()">Update</button>
+                <span class="alert-error" *ngIf="sapUploadingImage2Error !== ''">
+                    <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ sapUploadingImage2Error }}</strong>
+                </span>
+                <!-- Progress bar -->
+                <div *ngIf="sapUploadingImage2">
+                    <br>
+                    <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                    <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="imageUploadingForm" *ngIf="sapImage3Src">
+                <label for="sapImage3Existing">Existing Image:</label>
+                <br>
+                <img *ngIf="sapImage3Src" id="sapImage3Existing" style="width: 100px; height: auto" [src]="sapImage3Src" [alt]="sapImage3Desc" [title]="sapImage3Desc">
+                <br>
+                <br>
+                <label for="sapImage3FileInput">Image to upload:</label>
+                <br>
+                <input type="file" id="sapImage3FileInput" (change)="sapDetectImage3($event)">
+                <br>                
+                <br>
+                <label for="sapImage3Desc">Description of image: <em>*delete to hide image</em></label>
+                <br>
+                <input type="text" id="sapImage3Desc" placeholder="Description" [(ngModel)]="sapImage3Desc">
+                <br>
+                <br>
+                <button class="btn btn-md uploadImageButton" (click)="sapUploadImage3()">Update</button>
+                <span class="alert-error" *ngIf="sapUploadingImage3Error !== ''">
+                    <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ sapUploadingImage3Error }}</strong>
+                </span>
+                <!-- Progress bar -->
+                <div *ngIf="sapUploadingImage3">
+                    <br>
+                    <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                    <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="imageUploadingForm" *ngIf="sapImage4Src">
+                <label for="sapImage4Existing">Existing Image:</label>
+                <br>
+                <img *ngIf="sapImage4Src" id="sapImage4Existing" style="width: 100px; height: auto" [src]="sapImage4Src" [alt]="sapImage4Desc" [title]="sapImage4Desc">
+                <br>
+                <br>
+                <label for="sapImage4FileInput">Image to upload:</label>
+                <br>
+                <input type="file" id="sapImage4FileInput" (change)="sapDetectImage4($event)">
+                <br>                
+                <br>
+                <label for="sapImage4Desc">Description of image: <em>*delete to hide image</em></label>
+                <br>
+                <input type="text" id="sapImage4Desc" placeholder="Description" [(ngModel)]="sapImage4Desc">
+                <br>
+                <br>
+                <button class="btn btn-md uploadImageButton" (click)="sapUploadImage4()">Update</button>
+                <span class="alert-error" *ngIf="sapUploadingImage4Error !== ''">
+                    <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ sapUploadingImage4Error }}</strong>
+                </span>
+                <!-- Progress bar -->
+                <div *ngIf="sapUploadingImage4">
+                    <br>
+                    <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                    <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="imageUploadingForm" *ngIf="sapImage5Src">
+                <label for="sapImage5Existing">Existing Image:</label>
+                <br>
+                <img *ngIf="sapImage5Src" id="sapImage5Existing" style="width: 100px; height: auto" [src]="sapImage5Src" [alt]="sapImage5Desc" [title]="sapImage5Desc">
+                <br>
+                <br>
+                <label for="sapImage5FileInput">Image to upload:</label>
+                <br>
+                <input type="file" id="sapImage5FileInput" (change)="sapDetectImage5($event)">
+                <br>                
+                <br>
+                <label for="sapImage5Desc">Description of image: <em>*delete to hide image</em></label>
+                <br>
+                <input type="text" id="sapImage5Desc" placeholder="Description" [(ngModel)]="sapImage5Desc">
+                <br>
+                <br>
+                <button class="btn btn-md uploadImageButton" (click)="sapUploadImage5()">Update</button>
+                <span class="alert-error" *ngIf="sapUploadingImage5Error !== ''">
+                    <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ sapUploadingImage5Error }}</strong>
+                </span>
+                <!-- Progress bar -->
+                <div *ngIf="sapUploadingImage5">
+                    <br>
+                    <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                    <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="imageUploadingForm" *ngIf="sapImage6Src">
+                <label for="sapImage6Existing">Existing Image:</label>
+                <br>
+                <img *ngIf="sapImage6Src" id="sapImage6Existing" style="width: 100px; height: auto" [src]="sapImage6Src" [alt]="sapImage6Desc" [title]="sapImage6Desc">
+                <br>
+                <br>
+                <label for="sapImage6FileInput">Image to upload:</label>
+                <br>
+                <input type="file" id="sapImage6FileInput" (change)="sapDetectImage6($event)">
+                <br>                
+                <br>
+                <label for="sapImage6Desc">Description of image: <em>*delete to hide image</em></label>
+                <br>
+                <input type="text" id="sapImage6Desc" placeholder="Description" [(ngModel)]="sapImage6Desc">
+                <br>
+                <br>
+                <button class="btn btn-md uploadImageButton" (click)="sapUploadImage6()">Update</button>
+                <span class="alert-error" *ngIf="sapUploadingImage6Error !== ''">
+                    <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ sapUploadingImage6Error }}</strong>
+                </span>
+                <!-- Progress bar -->
+                <div *ngIf="sapUploadingImage6">
+                    <br>
+                    <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                    <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
