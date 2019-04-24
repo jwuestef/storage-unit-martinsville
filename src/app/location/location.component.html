@@ -1,3 +1,97 @@
-<p>
-  location works!
-</p>
+<div class="container-fluid">
+
+
+
+    <h1 style="text-align: center;">Location</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <iframe width="65%" height="250" frameborder="0" [src]="mapLink" allowfullscreen></iframe>
+        </div>
+        <div class="col-md-6">
+            <p id="locationParagraph"></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p id="directions1"></p>
+        </div>
+        <div class="col-md-4">
+            <p id="directions2"></p>
+        </div>
+        <div class="col-md-4">
+            <p id="directions3"></p>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="authService.isAdmin" class="row adminSection">
+
+        <div class="col-md-6">
+            <div class="textUpdateForm">
+                <label for="mapLinkInput">Map URL:</label>
+                <input type="text" placeholder="Map Link" id="mapLinkInput" [(ngModel)]="mapLinkDisplayed">
+                <br>
+                <button class="btn btn-md updateTextButton" (click)="saveLocationParagraph()">Update</button>
+                <!-- After successful update, show confirmation -->
+                <span class="alert-success updated" *ngIf="locationParagraphUpdated">
+                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="textUpdateForm">
+                <texteditor [elementId]="'locationParagraphEditor'"></texteditor>
+                <br>
+                <button class="btn btn-md updateTextButton" (click)="saveLocationParagraph()">Update</button>
+                <!-- After successful update, show confirmation -->
+                <span class="alert-success updated" *ngIf="locationParagraphUpdated">
+                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="textUpdateForm">
+                <texteditor [elementId]="'directions1Editor'"></texteditor>
+                <br>
+                <button class="btn btn-md updateTextButton" (click)="saveDirections1()">Update</button>
+                <!-- After successful update, show confirmation -->
+                <span class="alert-success updated" *ngIf="directions1Updated">
+                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="textUpdateForm">
+                <texteditor [elementId]="'directions2Editor'"></texteditor>
+                <br>
+                <button class="btn btn-md updateTextButton" (click)="saveDirections2()">Update</button>
+                <!-- After successful update, show confirmation -->
+                <span class="alert-success updated" *ngIf="directions2Updated">
+                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="textUpdateForm">
+                <texteditor [elementId]="'directions3Editor'"></texteditor>
+                <br>
+                <button class="btn btn-md updateTextButton" (click)="saveDirections3()">Update</button>
+                <!-- After successful update, show confirmation -->
+                <span class="alert-success updated" *ngIf="directions3Updated">
+                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+                </span>
+            </div>
+        </div>
+ 
+    </div>
+
+
+
+</div>

@@ -83,6 +83,7 @@ export class SizingAndPricingComponent {
         const newContent = tinymce.get('sapParagraphEditor').getContent();
         this.contentService.savePageContent('sizesAndPricingPage', 'sapParagraph', newContent).then(() => {
             $('#sapParagraph').html(newContent)
+            this.contentService.siteContent['sizesAndPricingPage']['sapParagraph'] = newContent;
             this.sapParagraphUpdated = true;
             // A few seconds after completion, hide the confirmation
             window.setTimeout(() => {
@@ -122,6 +123,7 @@ export class SizingAndPricingComponent {
     sapUploadImage1() {
         if (this.sapImage1Desc.trim() === '' && document.getElementById("sapImage1FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image1Desc', this.sapImage1Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image1Desc'] = this.sapImage1Desc.trim();
                 this.sapUploadingImage1Error = 'Image now hidden';
                 setTimeout(() => {
                     this.sapUploadingImage1Error = '';
@@ -131,6 +133,7 @@ export class SizingAndPricingComponent {
         }
         if (this.sapImage1Desc.trim() !== '' && document.getElementById("sapImage1FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image1Desc', this.sapImage1Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image1Desc'] = this.sapImage1Desc.trim();
                 this.sapUploadingImage1Error = 'Description Updated';
                 setTimeout(() => {
                     this.sapUploadingImage1Error = '';
@@ -149,6 +152,8 @@ export class SizingAndPricingComponent {
                 // Updates thumbnail image
                 this.sapImage1Src = newURL.toString();
                 this.sapImage1Desc = this.sapImage1Desc.trim();
+                this.contentService.siteContent['sizesAndPricingPage']['image1Src'] = newURL.toString();
+                this.contentService.siteContent['sizesAndPricingPage']['image1Desc'] = this.sapImage1Desc.trim();
                 // A few seconds after completion, hide the confirmation
                 window.setTimeout(() => {
                     this.sapUploadingImage1 = false;
@@ -160,6 +165,7 @@ export class SizingAndPricingComponent {
     sapUploadImage2() {
         if (this.sapImage2Desc.trim() === '' && document.getElementById("sapImage2FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image2Desc', this.sapImage2Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image2Desc'] = this.sapImage2Desc.trim();
                 this.sapUploadingImage2Error = 'Image now hidden';
                 setTimeout(() => {
                     this.sapUploadingImage2Error = '';
@@ -169,6 +175,7 @@ export class SizingAndPricingComponent {
         }
         if (this.sapImage2Desc.trim() !== '' && document.getElementById("sapImage2FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image2Desc', this.sapImage2Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image2Desc'] = this.sapImage2Desc.trim();
                 this.sapUploadingImage2Error = 'Description Updated';
                 setTimeout(() => {
                     this.sapUploadingImage2Error = '';
@@ -187,6 +194,8 @@ export class SizingAndPricingComponent {
                 // Updates thumbnail image
                 this.sapImage2Src = newURL.toString();
                 this.sapImage2Desc = this.sapImage2Desc.trim();
+                this.contentService.siteContent['sizesAndPricingPage']['image2Src'] = newURL.toString();
+                this.contentService.siteContent['sizesAndPricingPage']['image2Desc'] = this.sapImage2Desc.trim();
                 // A few seconds after completion, hide the confirmation
                 window.setTimeout(() => {
                     this.sapUploadingImage2 = false;
@@ -198,6 +207,7 @@ export class SizingAndPricingComponent {
     sapUploadImage3() {
         if (this.sapImage3Desc.trim() === '' && document.getElementById("sapImage3FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image3Desc', this.sapImage3Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image3Desc'] = this.sapImage3Desc.trim();
                 this.sapUploadingImage3Error = 'Image now hidden';
                 setTimeout(() => {
                     this.sapUploadingImage3Error = '';
@@ -207,6 +217,7 @@ export class SizingAndPricingComponent {
         }
         if (this.sapImage3Desc.trim() !== '' && document.getElementById("sapImage3FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image3Desc', this.sapImage3Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image3Desc'] = this.sapImage3Desc.trim();
                 this.sapUploadingImage3Error = 'Description Updated';
                 setTimeout(() => {
                     this.sapUploadingImage3Error = '';
@@ -225,6 +236,8 @@ export class SizingAndPricingComponent {
                 // Updates thumbnail image
                 this.sapImage3Src = newURL.toString();
                 this.sapImage3Desc = this.sapImage3Desc.trim();
+                this.contentService.siteContent['sizesAndPricingPage']['image3Src'] = newURL.toString();
+                this.contentService.siteContent['sizesAndPricingPage']['image3Desc'] = this.sapImage3Desc.trim();
                 // A few seconds after completion, hide the confirmation
                 window.setTimeout(() => {
                     this.sapUploadingImage3 = false;
@@ -236,6 +249,7 @@ export class SizingAndPricingComponent {
     sapUploadImage4() {
         if (this.sapImage4Desc.trim() === '' && document.getElementById("sapImage4FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image4Desc', this.sapImage4Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image4Desc'] = this.sapImage4Desc.trim();
                 this.sapUploadingImage4Error = 'Image now hidden';
                 setTimeout(() => {
                     this.sapUploadingImage4Error = '';
@@ -245,6 +259,7 @@ export class SizingAndPricingComponent {
         }
         if (this.sapImage4Desc.trim() !== '' && document.getElementById("sapImage4FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image4Desc', this.sapImage4Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image4Desc'] = this.sapImage4Desc.trim();
                 this.sapUploadingImage4Error = 'Description Updated';
                 setTimeout(() => {
                     this.sapUploadingImage4Error = '';
@@ -263,6 +278,8 @@ export class SizingAndPricingComponent {
                 // Updates thumbnail image
                 this.sapImage4Src = newURL.toString();
                 this.sapImage4Desc = this.sapImage4Desc.trim();
+                this.contentService.siteContent['sizesAndPricingPage']['image4Src'] = newURL.toString();
+                this.contentService.siteContent['sizesAndPricingPage']['image4Desc'] = this.sapImage4Desc.trim();
                 // A few seconds after completion, hide the confirmation
                 window.setTimeout(() => {
                     this.sapUploadingImage4 = false;
@@ -274,6 +291,7 @@ export class SizingAndPricingComponent {
     sapUploadImage5() {
         if (this.sapImage5Desc.trim() === '' && document.getElementById("sapImage5FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image5Desc', this.sapImage5Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image5Desc'] = this.sapImage5Desc.trim();
                 this.sapUploadingImage5Error = 'Image now hidden';
                 setTimeout(() => {
                     this.sapUploadingImage5Error = '';
@@ -283,6 +301,7 @@ export class SizingAndPricingComponent {
         }
         if (this.sapImage5Desc.trim() !== '' && document.getElementById("sapImage5FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image5Desc', this.sapImage5Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image5Desc'] = this.sapImage5Desc.trim();
                 this.sapUploadingImage5Error = 'Description Updated';
                 setTimeout(() => {
                     this.sapUploadingImage5Error = '';
@@ -301,6 +320,8 @@ export class SizingAndPricingComponent {
                 // Updates thumbnail image
                 this.sapImage5Src = newURL.toString();
                 this.sapImage5Desc = this.sapImage5Desc.trim();
+                this.contentService.siteContent['sizesAndPricingPage']['image5Src'] = newURL.toString();
+                this.contentService.siteContent['sizesAndPricingPage']['image5Desc'] = this.sapImage5Desc.trim();
                 // A few seconds after completion, hide the confirmation
                 window.setTimeout(() => {
                     this.sapUploadingImage5 = false;
@@ -312,6 +333,7 @@ export class SizingAndPricingComponent {
     sapUploadImage6() {
         if (this.sapImage6Desc.trim() === '' && document.getElementById("sapImage6FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image6Desc', this.sapImage6Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image6Desc'] = this.sapImage6Desc.trim();
                 this.sapUploadingImage6Error = 'Image now hidden';
                 setTimeout(() => {
                     this.sapUploadingImage6Error = '';
@@ -321,6 +343,7 @@ export class SizingAndPricingComponent {
         }
         if (this.sapImage6Desc.trim() !== '' && document.getElementById("sapImage6FileInput")['files'].length !== 1) {
             this.contentService.savePageContent('sizesAndPricingPage', 'image6Desc', this.sapImage6Desc.trim()).then(() => {
+                this.contentService.siteContent['sizesAndPricingPage']['image6Desc'] = this.sapImage6Desc.trim();
                 this.sapUploadingImage6Error = 'Description Updated';
                 setTimeout(() => {
                     this.sapUploadingImage6Error = '';
@@ -339,6 +362,8 @@ export class SizingAndPricingComponent {
                 // Updates thumbnail image
                 this.sapImage6Src = newURL.toString();
                 this.sapImage6Desc = this.sapImage6Desc.trim();
+                this.contentService.siteContent['sizesAndPricingPage']['image6Src'] = newURL.toString();
+                this.contentService.siteContent['sizesAndPricingPage']['image6Desc'] = this.sapImage6Desc.trim();
                 // A few seconds after completion, hide the confirmation
                 window.setTimeout(() => {
                     this.sapUploadingImage6 = false;

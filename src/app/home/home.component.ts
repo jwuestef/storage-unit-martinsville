@@ -48,6 +48,7 @@ export class HomeComponent {
         const newContent = tinymce.get('homeParagraphEditor').getContent();
         this.contentService.savePageContent('homePage', 'homeParagraph', newContent).then(() => {
             $('#homeParagraph').html(newContent)
+            this.contentService.siteContent['homePage']['homeParagraph'] = newContent;
             this.homeParagraphUpdated = true;
             // A few seconds after completion, hide the confirmation
             window.setTimeout(() => {
@@ -90,6 +91,8 @@ export class HomeComponent {
             // Updates thumbnail image
             this.homeImage1Src = newURL.toString();
             this.homeImage1Desc = this.homeImage1Desc.trim();
+            this.contentService.siteContent['homePage']['homeImageSrc'] = newURL.toString();
+            this.contentService.siteContent['homePage']['homeImageDesc'] = this.homeImage1Desc.trim();
             // A few seconds after completion, hide the confirmation
             window.setTimeout(() => {
                 this.homeUploadingImage1 = false;
