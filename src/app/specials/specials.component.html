@@ -1,3 +1,68 @@
-<p>
-  specials works!
-</p>
+<div class="container-fluid">
+
+
+
+    <h1 style="text-align: center;">Special Deals</h1>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <p id="specialsParagraph"></p>
+        </div>
+
+        <div class="col-md-6">
+            <img *ngIf="specialsImage1Src" [src]="specialsImage1Src" [alt]="specialsImage1Desc" [title]="specialsImage1Desc" style="max-width: 100%; max-height: 300px;">
+        </div>
+
+    </div>
+
+
+
+    <div *ngIf="authService.isAdmin" class="row adminSection">
+
+        <div class="col-md-6">
+            <div class="textUpdateForm">
+                <texteditor [elementId]="'specialsParagraphEditor'"></texteditor>
+                <br>
+                <button class="btn btn-md updateTextButton" (click)="savespecialsParagraph()">Update</button>
+                <!-- After successful update, show confirmation -->
+                <span class="alert-success updated" *ngIf="specialsParagraphUpdated">
+                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="imageUploadingForm" *ngIf="specialsImage1Src">
+                <label for="specialsImage1Existing">Existing Image:</label>
+                <br>
+                <img *ngIf="specialsImage1Src" id="specialsImage1Existing" style="width: 100px; height: auto" [src]="specialsImage1Src" [alt]="specialsImage1Desc" [title]="specialsImage1Desc">
+                <br>
+                <br>
+                <label for="specialsImage1FileInput">Image to upload: <em style="color: red;">*required</em></label>
+                <br>
+                <input type="file" id="specialsImage1FileInput" (change)="specialsDetectImage1($event)">
+                <p><em>*For proper appearance, image should have a 2:1 aspect ratio.</em></p>
+                <label for="specialsImage1Desc">Description of image: <em style="color: red;">*required</em></label>
+                <br>
+                <input type="text" id="specialsImage1Desc" placeholder="Description" [(ngModel)]="specialsImage1Desc">
+                <br>
+                <br>
+                <button class="btn btn-md uploadImageButton" (click)="specialsUploadImage1()">Upload</button>
+                <span class="alert-error" *ngIf="specialsUploadingImage1Error !== ''">
+                    <i class="fa fa-ban fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>{{ specialsUploadingImage1Error }}</strong>
+                </span>
+                <!-- Progress bar -->
+                <div *ngIf="specialsUploadingImage1">
+                    <br>
+                    <p>Progress: {{ contentService.uploadPercent | async }}% Complete</p>
+                    <progress class="progress is-success" min=1 max=100 value="{{ contentService.uploadPercent | async }}"></progress>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+
+
+
+</div>
