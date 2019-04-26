@@ -1,3 +1,53 @@
-<p>
-  contact works!
-</p>
+<div class="container-fluid">
+
+
+
+    <h1 style="text-align: center;">Contact Us</h1>
+
+    <div class="row">
+
+        <div class="col-md-6" style="margin: 0 auto;">
+            <p id="contactParagraph"></p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" style="margin: 0 auto;">
+            <h2>Contact Us</h2>
+            <div>
+                <label for="contactName">Your name:</label>
+                <input class="form-control" type="text" [(ngModel)]="contactRequestName" placeholder="ex: John Smith">
+                <br>
+                <label for="contactPhone">Phone number:</label>
+                <input class="form-control" type="text" [(ngModel)]="contactRequestPhone" placeholder="ex: (555) 555-555">
+                <br>
+                <label for="contactMessage">Message:</label>
+                <textarea class="form-control" cols="30" rows="10" [(ngModel)]="contactRequestMessage" placeholder="ex: I am interested in renting a small unit next month. Do you have any 6x10 units available?"></textarea>
+                <br>
+                <button (click)="postMessage()" class="btn btn-primary btn-md pull-right">Send</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="authService.isAdmin" class="row adminSection">
+
+        <div class="col-md-6" style="margin: 0 auto;">
+            <div class="textUpdateForm">
+                <texteditor [elementId]="'contactParagraphEditor'"></texteditor>
+                <br>
+                <button class="btn btn-md updateTextButton" (click)="savecontactParagraph()">Update</button>
+                <!-- After successful update, show confirmation -->
+                <span class="alert-success updated" *ngIf="contactParagraphUpdated">
+                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+                </span>
+            </div>
+        </div>
+ 
+    </div>
+
+
+
+</div>
