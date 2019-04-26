@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <iframe width="65%" height="250" frameborder="0" [src]="mapLink" allowfullscreen></iframe>
+            <iframe *ngIf="mapLink" width="65%" height="250" frameborder="0" [src]="mapLink" allowfullscreen></iframe>
         </div>
         <div class="col-md-6">
             <p id="locationParagraph"></p>
@@ -34,9 +34,9 @@
                 <label for="mapLinkInput">Map URL:</label>
                 <input type="text" placeholder="Map Link" id="mapLinkInput" [(ngModel)]="mapLinkDisplayed">
                 <br>
-                <button class="btn btn-md updateTextButton" (click)="saveLocationParagraph()">Update</button>
+                <button class="btn btn-md updateTextButton" (click)="saveMapLink()">Update</button>
                 <!-- After successful update, show confirmation -->
-                <span class="alert-success updated" *ngIf="locationParagraphUpdated">
+                <span class="alert-success updated" *ngIf="mapLinkUpdated">
                     <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
                 </span>
             </div>

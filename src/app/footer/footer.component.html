@@ -1,7 +1,87 @@
-<p>
-  footer works!
-</p>
+
+<footer class="row">
+
+    <div class="col-md-1">
+        <span *ngIf="!authService.isAdmin" (click)="authService.googleSignin()">Login</span>
+        <span *ngIf="authService.isAdmin" (click)="authService.logout()">Logout</span>
+    </div>
+
+    <div class="col-md-2">
+        <p id="facebookLink">{{ facebookLink }}</p>
+    </div>
+
+    <div class="col-md-3">
+        <p id="phoneNumberParagraph"></p>
+    </div>
+
+    <div class="col-md-3">
+        <p id="addressParagraph"></p>
+    </div>
+
+    <div class="col-md-3">
+        <iframe *ngIf="mapLink" width="65%" height="250" frameborder="0" [src]="mapLink" allowfullscreen></iframe>
+    </div>
+
+</footer>
 
 
-<p (click)="authService.googleSignin()">Login</p>
-<p (click)="authService.logout()">Logout</p>
+
+
+
+
+
+
+
+<div *ngIf="authService.isAdmin" class="row adminSection">
+
+    <div class="col-md-3">
+        <div class="textUpdateForm">
+            <label for="mapLinkInput">Map URL:</label>
+            <input type="text" placeholder="Map Link" id="mapLinkInput" [(ngModel)]="mapLinkDisplayed">
+            <br>
+            <button class="btn btn-md updateTextButton" (click)="saveMapLink()">Update</button>
+            <!-- After successful update, show confirmation -->
+            <span class="alert-success updated" *ngIf="mapLinkUpdated">
+                <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="textUpdateForm">
+            <texteditor [elementId]="'phoneNumberParagraphEditor'"></texteditor>
+            <br>
+            <button class="btn btn-md updateTextButton" (click)="savePhoneNumberParagraph()">Update</button>
+            <!-- After successful update, show confirmation -->
+            <span class="alert-success updated" *ngIf="phoneNumberParagraphUpdated">
+                <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="textUpdateForm">
+            <texteditor [elementId]="'addressParagraphEditor'"></texteditor>
+            <br>
+            <button class="btn btn-md updateTextButton" (click)="saveAddressParagraph()">Update</button>
+            <!-- After successful update, show confirmation -->
+            <span class="alert-success updated" *ngIf="addressParagraphUpdated">
+                <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="textUpdateForm">
+            <label for="facebookLinkInput">Facebook URL:</label>
+            <input type="text" placeholder="facebook Link" id="facebookLinkInput" [(ngModel)]="facebookLinkDisplayed">
+            <br>
+            <button class="btn btn-md updateTextButton" (click)="saveFacebookLink()">Update</button>
+            <!-- After successful update, show confirmation -->
+            <span class="alert-success updated" *ngIf="facebookLinkUpdated">
+                <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
+            </span>
+        </div>
+    </div>
+
+</div>

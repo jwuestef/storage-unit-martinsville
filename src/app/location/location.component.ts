@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { ContentService } from '../services/content.service';
 import { AuthService } from '../services/auth.service';
