@@ -1,16 +1,18 @@
 
-<footer class="row">
+<footer class="row content-display">
 
-    <div class="col-md-1">
-        <span *ngIf="!authService.isAdmin" (click)="authService.googleSignin()">Login</span>
-        <span *ngIf="authService.isAdmin" (click)="authService.logout()">Logout</span>
+    <div class="col-md-1" style="display: flex; justify-content: flex-end; flex-direction: column; text-align: left;">
+        <img *ngIf="!authService.isAdmin" class="admin-logo" src="/assets/SUMLogo.png" alt="Administrator Login" title="Administrator Login" (click)="authService.googleSignin()">
+        <img *ngIf="authService.isAdmin" class="admin-logo" src="/assets/SUMLogo.png" alt="Administrator Logout" title="Administrator Logout" (click)="authService.logout()">
     </div>
 
     <div class="col-md-2">
-        <p id="facebookLink">{{ facebookLink }}</p>
+        <a [href]="facebookLink" target="_blank" title="Visit our Facebook page">
+            <img src="/assets/facebook-logo.png" alt="Facebook page">
+        </a>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
         <p id="phoneNumberParagraph"></p>
     </div>
 
@@ -18,7 +20,7 @@
         <p id="addressParagraph"></p>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <iframe *ngIf="mapLink" width="65%" height="250" frameborder="0" [src]="mapLink" allowfullscreen></iframe>
     </div>
 
@@ -38,6 +40,7 @@
         <div class="textUpdateForm">
             <label for="mapLinkInput">Map URL:</label>
             <input type="text" placeholder="Map Link" id="mapLinkInput" [(ngModel)]="mapLinkDisplayed">
+            <br>
             <br>
             <button class="btn btn-md updateTextButton" (click)="saveMapLink()">Update</button>
             <!-- After successful update, show confirmation -->
@@ -75,6 +78,7 @@
         <div class="textUpdateForm">
             <label for="facebookLinkInput">Facebook URL:</label>
             <input type="text" placeholder="facebook Link" id="facebookLinkInput" [(ngModel)]="facebookLinkDisplayed">
+            <br>
             <br>
             <button class="btn btn-md updateTextButton" (click)="saveFacebookLink()">Update</button>
             <!-- After successful update, show confirmation -->

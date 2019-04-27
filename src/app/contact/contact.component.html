@@ -2,33 +2,35 @@
 
 
 
-    <h1 style="text-align: center;">Contact Us</h1>
+    <h1>Contact Us</h1>
 
-    <div class="row">
+    <div class="row content-display">
 
-        <div class="col-md-6" style="margin: 0 auto;">
+        <div class="col-md-1"></div>
+        
+        <div class="col-md-5">
             <p id="contactParagraph"></p>
         </div>
+        
+        <div class="col-md-1"></div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-md-6" style="margin: 0 auto;">
-            <h2>Contact Us</h2>
-            <div>
-                <label for="contactName">Your name:</label>
-                <input class="form-control" type="text" [(ngModel)]="contactRequestName" placeholder="ex: John Smith">
-                <br>
-                <label for="contactPhone">Phone number:</label>
-                <input class="form-control" type="text" [(ngModel)]="contactRequestPhone" placeholder="ex: (555) 555-555">
-                <br>
-                <label for="contactMessage">Message:</label>
-                <textarea class="form-control" cols="30" rows="10" [(ngModel)]="contactRequestMessage" placeholder="ex: I am interested in renting a small unit next month. Do you have any 6x10 units available?"></textarea>
-                <br>
-                <button (click)="postMessage()" class="btn btn-primary btn-md pull-right">Send</button>
-            </div>
+        <div class="col-md-4">
+            <label for="contactName">Name:</label>
+            <input class="form-control" type="text" [(ngModel)]="contactRequestName" placeholder="ex: John Smith">
+            <br>
+            <label for="contactPhone">Phone Number:</label>
+            <input class="form-control" type="text" [(ngModel)]="contactRequestPhone" placeholder="ex: (555) 555-555">
+            <br>
+            <label for="contactMessage">Message:</label>
+            <textarea class="form-control" cols="30" rows="10" [(ngModel)]="contactRequestMessage" placeholder="ex: I am interested in renting a small unit next month. Do you have any 6x10 units available?"></textarea>
+            <br>
+            <button (click)="postMessage()" class="btn btn-primary btn-lg">Send</button>
         </div>
+
+        <div class="col-md-1"></div>
+
     </div>
+
 
 
 

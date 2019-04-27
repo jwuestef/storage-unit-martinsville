@@ -2,6 +2,10 @@ body {
     background-size: cover !important;
 }
 
+p {
+    margin: 0;
+}
+
 
 .btn {
     background-color: #303F9F;
@@ -12,6 +16,16 @@ body {
     background-color: #1F2966 !important;
     color: #ECEDF6 !important;
     border: 2px solid #4C64FF !important;
+}
+
+
+
+// Every page's header
+h1 {
+    text-align: center;
+    margin: 3rem auto;
+    text-shadow: #FFF 0 0 7.5px;
+    font-size: 4rem;
 }
 
 

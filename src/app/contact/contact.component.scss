@@ -1,0 +1,29 @@
+
+
+
+.content-display > div {
+    margin: 0 auto;
+}
+
+.content-display p {
+    border: 4px outset rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+    font-size: 2rem;
+    line-height: 4rem;
+}
+
+.content-display label {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: #FFF 0 0 5px;
+}
+
+.content-display td {
+    width: 50% !important;
+    background-color: red !important;
+}
+
+.content-display button {
+    box-shadow: #FFF 0 0 5px;
+}

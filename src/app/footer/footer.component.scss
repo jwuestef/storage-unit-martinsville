@@ -1,0 +1,39 @@
+
+
+
+footer {
+    margin: 0;
+    margin-top: 5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+}
+
+
+
+.content-display > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+
+.content-display p {
+    font-size: 2rem;
+    line-height: 4rem;
+}
+
+
+
+.admin-logo {
+    width: 25px;
+}
+
+
+
+.adminSection input {
+    width: 100%;
+}
+
+
