@@ -1,6 +1,46 @@
 
 
 
+
+
+#bannerImage {
+    height: 300px;
+    margin: 2rem auto;
+}
+
+
+
+
+
+// When the screen is under 992px wide (collapsed phone view), the navbar links are larger
+@media only screen and (max-width: 1300px) {
+    nav a {
+        font-size: 2rem;
+    }
+}
+
+nav a {
+    font-size: 1rem;
+}
+
+// When the screen is over 1300px wide, the navbar links are larger
+@media only screen and (min-width: 1300px) {
+    nav a {
+        font-size: 1.5rem;
+    }
+}
+
+// When the screen is over 1700px wide, the navbar links are larger
+@media only screen and (min-width: 1700px) {
+    nav a {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+
 // When the screen is over 992px wide, the navbar items should be centered on the page
 @media only screen and (min-width: 992px) {
     #navbarNavAltMarkup {

@@ -12,32 +12,32 @@
 
     <div class="row content-display">
 
-        <div class="col-md-6 eachSizeSection" *ngIf="sapImage1Src && sapImage1Desc">
+        <div class="col-lg-6 eachSizeSection" *ngIf="sapImage1Src && sapImage1Desc">
             <h3>{{ sapImage1Desc }}</h3>
             <img [src]="sapImage1Src" [alt]="sapImage1Desc" [title]="sapImage1Desc">
         </div>
 
-        <div class="col-md-6 eachSizeSection" *ngIf="sapImage2Src && sapImage2Desc">
+        <div class="col-lg-6 eachSizeSection" *ngIf="sapImage2Src && sapImage2Desc">
             <h3>{{ sapImage2Desc }}</h3>
             <img [src]="sapImage2Src" [alt]="sapImage2Desc" [title]="sapImage2Desc">
         </div>
 
-        <div class="col-md-6 eachSizeSection" *ngIf="sapImage3Src && sapImage3Desc">
+        <div class="col-lg-6 eachSizeSection" *ngIf="sapImage3Src && sapImage3Desc">
             <h3>{{ sapImage3Desc }}</h3>
             <img [src]="sapImage3Src" [alt]="sapImage3Desc" [title]="sapImage3Desc">
         </div>
 
-        <div class="col-md-6 eachSizeSection" *ngIf="sapImage4Src && sapImage4Desc">
+        <div class="col-lg-6 eachSizeSection" *ngIf="sapImage4Src && sapImage4Desc">
             <h3>{{ sapImage4Desc }}</h3>
             <img [src]="sapImage4Src" [alt]="sapImage4Desc" [title]="sapImage4Desc">
         </div>
 
-        <div class="col-md-6 eachSizeSection" *ngIf="sapImage5Src && sapImage5Desc">
+        <div class="col-lg-6 eachSizeSection" *ngIf="sapImage5Src && sapImage5Desc">
             <h3>{{ sapImage5Desc }}</h3>
             <img [src]="sapImage5Src" [alt]="sapImage5Desc" [title]="sapImage5Desc">
         </div>
 
-        <div class="col-md-6 eachSizeSection" *ngIf="sapImage6Src && sapImage6Desc">
+        <div class="col-lg-6 eachSizeSection" *ngIf="sapImage6Src && sapImage6Desc">
             <h3>{{ sapImage6Desc }}</h3>
             <img [src]="sapImage6Src" [alt]="sapImage6Desc" [title]="sapImage6Desc">
         </div>
@@ -48,7 +48,7 @@
 
     <div *ngIf="authService.isAdmin" class="row adminSection">
 
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <div class="textUpdateForm">
                 <texteditor [elementId]="'sapParagraphEditor'"></texteditor>
                 <br>
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="imageUploadingForm" *ngIf="sapImage1Src">
                 <label for="sapImage1Existing">Existing Image:</label>
                 <br>
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="imageUploadingForm" *ngIf="sapImage2Src">
                 <label for="sapImage2Existing">Existing Image:</label>
                 <br>
@@ -120,7 +120,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="imageUploadingForm" *ngIf="sapImage3Src">
                 <label for="sapImage3Existing">Existing Image:</label>
                 <br>
@@ -150,7 +150,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="imageUploadingForm" *ngIf="sapImage4Src">
                 <label for="sapImage4Existing">Existing Image:</label>
                 <br>
@@ -180,7 +180,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="imageUploadingForm" *ngIf="sapImage5Src">
                 <label for="sapImage5Existing">Existing Image:</label>
                 <br>
@@ -210,7 +210,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="imageUploadingForm" *ngIf="sapImage6Src">
                 <label for="sapImage6Existing">Existing Image:</label>
                 <br>

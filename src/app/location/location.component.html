@@ -6,19 +6,19 @@
 
     <div class="row content-display" style="margin-bottom: 5rem;">
 
-        <div class="col-md-1"></div>
+        <div class="col-lg-1"></div>
         
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <iframe *ngIf="mapLink" width="100%" height="500px" frameborder="0" [src]="mapLink" allowfullscreen></iframe>
         </div>
 
-        <div class="col-md-1"></div>
+        <div class="col-lg-1"></div>
         
-        <div class="col-md-5">
+        <div class="col-lg-5">
             <p id="locationParagraph"></p>
         </div>
 
-        <div class="col-md-1"></div>
+        <div class="col-lg-1"></div>
 
     </div>
 
@@ -26,15 +26,15 @@
 
     <div class="row content-display">
 
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <p id="directions1"></p>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <p id="directions2"></p>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <p id="directions3"></p>
         </div>
 
@@ -46,7 +46,7 @@
 
     <div *ngIf="authService.isAdmin" class="row adminSection">
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="textUpdateForm">
                 <label for="mapLinkInput">Map URL:</label>
                 <input type="text" placeholder="Map Link" id="mapLinkInput" [(ngModel)]="mapLinkDisplayed">
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div class="textUpdateForm">
                 <texteditor [elementId]="'locationParagraphEditor'"></texteditor>
                 <br>
@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <div class="textUpdateForm">
                 <texteditor [elementId]="'directions1Editor'"></texteditor>
                 <br>
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <div class="textUpdateForm">
                 <texteditor [elementId]="'directions2Editor'"></texteditor>
                 <br>
@@ -95,7 +95,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <div class="textUpdateForm">
                 <texteditor [elementId]="'directions3Editor'"></texteditor>
                 <br>

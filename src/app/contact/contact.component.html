@@ -6,15 +6,15 @@
 
     <div class="row content-display">
 
-        <div class="col-md-1"></div>
+        <div class="col-lg-1"></div>
         
-        <div class="col-md-5">
+        <div class="col-lg-5">
             <p id="contactParagraph"></p>
         </div>
         
-        <div class="col-md-1"></div>
+        <div class="col-lg-1"></div>
 
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <label for="contactName">Name:</label>
             <input class="form-control" type="text" [(ngModel)]="contactRequestName" placeholder="ex: John Smith">
             <br>
@@ -27,7 +27,7 @@
             <button (click)="postMessage()" class="btn btn-primary btn-lg">Send</button>
         </div>
 
-        <div class="col-md-1"></div>
+        <div class="col-lg-1"></div>
 
     </div>
 
@@ -36,7 +36,7 @@
 
     <div *ngIf="authService.isAdmin" class="row adminSection">
 
-        <div class="col-md-6" style="margin: 0 auto;">
+        <div class="col-lg-6" style="margin: 0 auto;">
             <div class="textUpdateForm">
                 <texteditor [elementId]="'contactParagraphEditor'"></texteditor>
                 <br>
