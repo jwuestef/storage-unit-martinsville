@@ -71,6 +71,10 @@ export class HeaderComponent implements OnInit {
             $(this).addClass("active");
         });
 
+        $('.navbar-nav > a').on('click', function(){
+            ($('.navbar-collapse') as any).collapse('hide');
+        });
+
     }
 
 

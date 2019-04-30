@@ -2,8 +2,11 @@
 
 
 
+.content-display {
+    margin-bottom: 5rem;
+}
+
 .content-display p {
-    width: 30%;
     display: block;
     margin: auto;
     border: 4px outset rgba(255, 255, 255, 0.75);
@@ -11,6 +14,11 @@
     padding: 2rem;
     font-size: 2rem;
     line-height: 4rem;
+    text-align: center;
+}
+
+#sapParagraph > table {
+    width: 100% !important;
 }
 
 

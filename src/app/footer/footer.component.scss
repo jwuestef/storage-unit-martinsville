@@ -3,7 +3,6 @@
 
 footer {
     margin: 0;
-    margin-top: 5rem;
     background-color: rgba(255, 255, 255, 0.5);
     padding: 2rem;
 }
@@ -37,3 +36,19 @@ footer {
 }
 
 
+
+iframe {
+    margin: 2rem auto;
+}
+
+
+
+div > a > img {
+    width: 100%;
+}
+// When the screen is under 992px wide (collapsed phone view), the facebook link is smaller
+@media only screen and (max-width: 992px) {
+    div > a > img {
+        width: 50%;
+    }
+}

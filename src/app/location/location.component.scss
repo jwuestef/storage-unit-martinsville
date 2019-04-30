@@ -11,3 +11,23 @@
     font-size: 2rem;
     line-height: 4rem;
 }
+
+
+
+.col-lg-4 {
+    margin-bottom:5rem;
+}
+
+
+
+// When the screen is under 992px wide (collapsed phone view), use less padding everywhere
+@media only screen and (max-width: 992px) {
+
+    .content-display p {
+        width: 97.5%;
+        padding: 1rem;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+    }
+
+}

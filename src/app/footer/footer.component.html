@@ -1,10 +1,7 @@
 
 <footer class="row content-display">
 
-    <div class="col-lg-1" style="display: flex; justify-content: flex-end; flex-direction: column; text-align: left;">
-        <img *ngIf="!authService.isAdmin" class="admin-logo" src="/assets/SUMLogo.png" alt="Administrator Login" title="Administrator Login" (click)="authService.googleSignin()">
-        <img *ngIf="authService.isAdmin" class="admin-logo" src="/assets/SUMLogo.png" alt="Administrator Logout" title="Administrator Logout" (click)="authService.logout()">
-    </div>
+    <!-- <div class="col-lg-1"></div> -->
 
     <div class="col-lg-2">
         <a [href]="facebookLink" target="_blank" title="Visit our Facebook page">
@@ -12,7 +9,7 @@
         </a>
     </div>
 
-    <div class="col-lg-2">
+    <div class="col-lg-3">
         <p id="phoneNumberParagraph"></p>
     </div>
 
@@ -22,6 +19,10 @@
 
     <div class="col-lg-4">
         <iframe *ngIf="mapLink" width="65%" height="250" frameborder="0" [src]="mapLink" allowfullscreen></iframe>
+        <div style="display: flex; justify-content: flex-end; flex-direction: column; align-items: flex-end">
+            <img *ngIf="!authService.isAdmin" class="admin-logo" src="/assets/SUMLogo.png" alt="Administrator Login" title="Administrator Login" (click)="authService.googleSignin()">
+            <img *ngIf="authService.isAdmin" class="admin-logo" src="/assets/SUMLogo.png" alt="Administrator Logout" title="Administrator Logout" (click)="authService.logout()">
+        </div>
     </div>
 
 </footer>

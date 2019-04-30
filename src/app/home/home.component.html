@@ -6,12 +6,12 @@
 
     <div class="row content-display">
 
-        <div class="col-lg-6">
-            <p id="homeParagraph"></p>
+        <div class="col-lg-6 order-lg-2">
+            <img *ngIf="homeImage1Src" [src]="homeImage1Src" [alt]="homeImage1Desc" [title]="homeImage1Desc">
         </div>
 
-        <div class="col-lg-6">
-            <img *ngIf="homeImage1Src" [src]="homeImage1Src" [alt]="homeImage1Desc" [title]="homeImage1Desc">
+        <div class="col-lg-6 order-lg-1">
+            <p id="homeParagraph"></p>
         </div>
 
     </div>
