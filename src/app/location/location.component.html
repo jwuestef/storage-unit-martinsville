@@ -26,16 +26,12 @@
 
     <div class="row content-display">
 
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <p id="directions1"></p>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <p id="directions2"></p>
-        </div>
-
-        <div class="col-lg-4">
-            <p id="directions3"></p>
         </div>
 
     </div>
@@ -71,7 +67,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="textUpdateForm">
                 <texteditor [elementId]="'directions1Editor'"></texteditor>
                 <br>
@@ -83,25 +79,13 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="textUpdateForm">
                 <texteditor [elementId]="'directions2Editor'"></texteditor>
                 <br>
                 <button class="btn btn-md updateTextButton" (click)="saveDirections2()">Update</button>
                 <!-- After successful update, show confirmation -->
                 <span class="alert-success updated" *ngIf="directions2Updated">
-                    <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
-                </span>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-            <div class="textUpdateForm">
-                <texteditor [elementId]="'directions3Editor'"></texteditor>
-                <br>
-                <button class="btn btn-md updateTextButton" (click)="saveDirections3()">Update</button>
-                <!-- After successful update, show confirmation -->
-                <span class="alert-success updated" *ngIf="directions3Updated">
                     <i class="fa fa-check-circle fa-1x" aria-hidden="true" style="margin-right: 0.5rem;"></i><strong>Updated</strong>
                 </span>
             </div>

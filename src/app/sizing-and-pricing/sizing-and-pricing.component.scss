@@ -6,7 +6,7 @@
     margin-bottom: 5rem;
 }
 
-.content-display p {
+.sizePriceDiv {
     display: block;
     margin: auto;
     border: 4px outset rgba(255, 255, 255, 0.75);
@@ -16,6 +16,32 @@
     line-height: 4rem;
     text-align: center;
 }
+
+.sizePriceDiv {
+    width: 30%;
+}
+
+.sizePriceDiv span {
+    text-align: center;
+}
+// When the screen is under 992px wide (collapsed phone view), use less padding everywhere
+@media only screen and (max-width: 1300px) {
+    .sizePriceDiv span {
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        line-height: 3rem;
+    }
+    .sizePriceDiv {
+        padding: 0.5rem;
+    }
+}
+// When the screen is under 992px wide (collapsed phone view), use less padding everywhere
+@media only screen and (max-width: 992px) {
+    .sizePriceDiv {
+        width: 100%;
+    }
+}
+
 
 #sapParagraph > table {
     width: 100% !important;
@@ -35,7 +61,24 @@
 }
 
 .eachSizeSection img {
-    max-width: 100%;
+    width: 50%;
     display: block;
     margin: auto;
+}
+
+.textUpdateForm {
+    margin: auto;
+    width: 30%;
+    min-width: 450px;
+}
+// When the screen is under 992px wide (collapsed phone view), use less padding everywhere
+@media only screen and (max-width: 992px) {
+    .textUpdateForm {
+        width: 100%;
+    }
+}
+
+.sizePriceDetailsInput {
+    margin: 0.5rem 0.25rem;
+    width: 150px;
 }

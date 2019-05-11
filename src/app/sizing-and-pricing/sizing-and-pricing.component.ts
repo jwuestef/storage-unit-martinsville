@@ -12,6 +12,18 @@ import { Image } from '../services/image';
     styleUrls: ['./sizing-and-pricing.component.scss']
 })
 export class SizingAndPricingComponent {
+    size1Dimensions = '';
+    size2Dimensions = '';
+    size3Dimensions = '';
+    size4Dimensions = '';
+    size5Dimensions = '';
+    size6Dimensions = '';
+    size1Price = '';
+    size2Price = '';
+    size3Price = '';
+    size4Price = '';
+    size5Price = '';
+    size6Price = '';
     sapParagraphUpdated = false;
     sapCurrentUpload: Image;
     sapImage1Src: string;
@@ -52,7 +64,18 @@ export class SizingAndPricingComponent {
         // Pull content from Firebase and load it into the page content
         this.contentService.getPageContent('sizesAndPricingPage').then(pageContent => {
             // Set the paragraph contents
-            $('#sapParagraph').html(pageContent['sapParagraph']);
+            this.size1Dimensions = pageContent['sapParagraph']['size1Dimensions'];
+            this.size2Dimensions = pageContent['sapParagraph']['size2Dimensions'];
+            this.size3Dimensions = pageContent['sapParagraph']['size3Dimensions'];
+            this.size4Dimensions = pageContent['sapParagraph']['size4Dimensions'];
+            this.size5Dimensions = pageContent['sapParagraph']['size5Dimensions'];
+            this.size6Dimensions = pageContent['sapParagraph']['size6Dimensions'];
+            this.size1Price = pageContent['sapParagraph']['size1Price'];
+            this.size2Price = pageContent['sapParagraph']['size2Price'];
+            this.size3Price = pageContent['sapParagraph']['size3Price'];
+            this.size4Price = pageContent['sapParagraph']['size4Price'];
+            this.size5Price = pageContent['sapParagraph']['size5Price'];
+            this.size6Price = pageContent['sapParagraph']['size6Price'];
             // Set the image properties
             this.sapImage1Src = pageContent['image1Src'];
             this.sapImage2Src = pageContent['image2Src'];
@@ -69,7 +92,18 @@ export class SizingAndPricingComponent {
             if (this.authService.isAdmin) {
                 // If they're an admin, set the content of paragraph editors
                 setTimeout(() => {
-                    tinymce.get('sapParagraphEditor').setContent(pageContent['sapParagraph']);
+                    document.getElementById('size1DimensionsInput')['value'] = pageContent['sapParagraph']['size1Dimensions'];
+                    document.getElementById('size2DimensionsInput')['value'] = pageContent['sapParagraph']['size2Dimensions'];
+                    document.getElementById('size3DimensionsInput')['value'] = pageContent['sapParagraph']['size3Dimensions'];
+                    document.getElementById('size4DimensionsInput')['value'] = pageContent['sapParagraph']['size4Dimensions'];
+                    document.getElementById('size5DimensionsInput')['value'] = pageContent['sapParagraph']['size5Dimensions'];
+                    document.getElementById('size6DimensionsInput')['value'] = pageContent['sapParagraph']['size6Dimensions'];
+                    document.getElementById('size1PriceInput')['value'] = pageContent['sapParagraph']['size1Price'];
+                    document.getElementById('size2PriceInput')['value'] = pageContent['sapParagraph']['size2Price'];
+                    document.getElementById('size3PriceInput')['value'] = pageContent['sapParagraph']['size3Price'];
+                    document.getElementById('size4PriceInput')['value'] = pageContent['sapParagraph']['size4Price'];
+                    document.getElementById('size5PriceInput')['value'] = pageContent['sapParagraph']['size5Price'];
+                    document.getElementById('size6PriceInput')['value'] = pageContent['sapParagraph']['size6Price'];
                 }, 100)
             }
         })
@@ -80,10 +114,34 @@ export class SizingAndPricingComponent {
     // As an admin, saves the content of the editor for the sap paragraph, and then shows a success message
     saveSapParagraph() {
         this.sapParagraphUpdated = false;
-        const newContent = tinymce.get('sapParagraphEditor').getContent();
+        const newContent = {
+            size1Dimensions: document.getElementById('size1DimensionsInput')['value'],
+            size2Dimensions: document.getElementById('size2DimensionsInput')['value'],
+            size3Dimensions: document.getElementById('size3DimensionsInput')['value'],
+            size4Dimensions: document.getElementById('size4DimensionsInput')['value'],
+            size5Dimensions: document.getElementById('size5DimensionsInput')['value'],
+            size6Dimensions: document.getElementById('size6DimensionsInput')['value'],
+            size1Price: document.getElementById('size1PriceInput')['value'],
+            size2Price: document.getElementById('size2PriceInput')['value'],
+            size3Price: document.getElementById('size3PriceInput')['value'],
+            size4Price: document.getElementById('size4PriceInput')['value'],
+            size5Price: document.getElementById('size5PriceInput')['value'],
+            size6Price: document.getElementById('size6PriceInput')['value'],
+        };
         this.contentService.savePageContent('sizesAndPricingPage', 'sapParagraph', newContent).then(() => {
-            $('#sapParagraph').html(newContent)
             this.contentService.siteContent['sizesAndPricingPage']['sapParagraph'] = newContent;
+            this.size1Dimensions = newContent['size1Dimensions'];
+            this.size2Dimensions = newContent['size2Dimensions'];
+            this.size3Dimensions = newContent['size3Dimensions'];
+            this.size4Dimensions = newContent['size4Dimensions'];
+            this.size5Dimensions = newContent['size5Dimensions'];
+            this.size6Dimensions = newContent['size6Dimensions'];
+            this.size1Price = newContent['size1Price'];
+            this.size2Price = newContent['size2Price'];
+            this.size3Price = newContent['size3Price'];
+            this.size4Price = newContent['size4Price'];
+            this.size5Price = newContent['size5Price'];
+            this.size6Price = newContent['size6Price'];
             this.sapParagraphUpdated = true;
             // A few seconds after completion, hide the confirmation
             window.setTimeout(() => {

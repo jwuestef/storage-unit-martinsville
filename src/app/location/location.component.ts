@@ -18,7 +18,6 @@ export class LocationComponent {
     locationParagraphUpdated = false;
     directions1Updated = false;
     directions2Updated = false;
-    directions3Updated = false;
 
 
 
@@ -31,14 +30,12 @@ export class LocationComponent {
             $('#locationParagraph').html(pageContent['locationParagraph']);
             $('#directions1').html(pageContent['directions1']);
             $('#directions2').html(pageContent['directions2']);
-            $('#directions3').html(pageContent['directions3']);
             if (this.authService.isAdmin) {
                 // If they're an admin, set the content of paragraph editors
                 setTimeout(() => {
                     tinymce.get('locationParagraphEditor').setContent(pageContent['locationParagraph']);
                     tinymce.get('directions1Editor').setContent(pageContent['directions1']);
                     tinymce.get('directions2Editor').setContent(pageContent['directions2']);
-                    tinymce.get('directions3Editor').setContent(pageContent['directions3']);
                 }, 100)
             }
         })
@@ -102,20 +99,6 @@ export class LocationComponent {
             // A few seconds after completion, hide the confirmation
             window.setTimeout(() => {
                 this.directions2Updated = false;
-            }, 2000);
-        });
-    }
-
-    saveDirections3() {
-        this.directions3Updated = false;
-        const newContent = tinymce.get('directions3Editor').getContent();
-        this.contentService.savePageContent('locationPage', 'directions3', newContent).then(() => {
-            $('#directions3').html(newContent)
-            this.contentService.siteContent['locationPage']['directions3'] = newContent;
-            this.directions3Updated = true;
-            // A few seconds after completion, hide the confirmation
-            window.setTimeout(() => {
-                this.directions3Updated = false;
             }, 2000);
         });
     }

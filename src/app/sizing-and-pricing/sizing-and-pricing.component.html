@@ -4,8 +4,44 @@
 
     <h1>Sizes and Pricing</h1>
     
-    <div class="row content-display">
-        <p id="sapParagraph"></p>
+    <div class="row content-display sizePriceDiv">
+        <!-- <p id="sapParagraph"></p> -->
+
+        <div>
+            <h2 style="width: 35%; text-decoration: underline; display: inline-block; text-align: center; padding: 0 2rem;">Size</h2>
+            <h2 style="width: 65%; text-decoration: underline; display: inline-block; text-align: center; padding: 0 2rem;">Price</h2>
+        </div>
+
+        <div *ngIf="size1Dimensions.trim() !== '' && size1Price.trim() !== ''">
+            <span style="width: 35%; display: inline-block;">{{ size1Dimensions }}</span>
+            <span style="width: 65%; display: inline-block;">{{ size1Price }}</span>
+        </div>
+
+        <div *ngIf="size2Dimensions.trim() !== '' && size2Price.trim() !== ''">
+            <span style="width: 35%; display: inline-block;">{{ size2Dimensions }}</span>
+            <span style="width: 65%; display: inline-block;">{{ size2Price }}</span>
+        </div>
+
+        <div *ngIf="size3Dimensions.trim() !== '' && size3Price.trim() !== ''">
+            <span style="width: 35%; display: inline-block;">{{ size3Dimensions }}</span>
+            <span style="width: 65%; display: inline-block;">{{ size3Price }}</span>
+        </div>
+
+        <div *ngIf="size4Dimensions.trim() !== '' && size4Price.trim() !== ''">
+            <span style="width: 35%; display: inline-block;">{{ size4Dimensions }}</span>
+            <span style="width: 65%; display: inline-block;">{{ size4Price }}</span>
+        </div>
+
+        <div *ngIf="size5Dimensions.trim() !== '' && size5Price.trim() !== ''">
+            <span style="width: 35%; display: inline-block;">{{ size5Dimensions }}</span>
+            <span style="width: 65%; display: inline-block;">{{ size5Price }}</span>
+        </div>
+
+        <div *ngIf="size6Dimensions.trim() !== '' && size6Price.trim() !== ''">
+            <span style="width: 35%; display: inline-block;">{{ size6Dimensions }}</span>
+            <span style="width: 65%; display: inline-block;">{{ size6Price }}</span>
+        </div>
+
     </div>
 
 
@@ -50,7 +86,28 @@
 
         <div class="col-lg-12">
             <div class="textUpdateForm">
-                <texteditor [elementId]="'sapParagraphEditor'"></texteditor>
+                <div style="text-align: center;">
+                    <h2 style="width: 150px; display: inline-block; text-decoration: underline;">Size</h2>
+                    <h2 style="width: 150px; display: inline-block; text-decoration: underline;">Price</h2>
+                    <br>
+                    <input type="text" class="sizePriceDetailsInput" id="size1DimensionsInput" placeholder="Ex: 6x6">
+                    <input type="text" class="sizePriceDetailsInput" id="size1PriceInput" placeholder="Ex: $50 / month">
+                    <br>
+                    <input type="text" class="sizePriceDetailsInput" id="size2DimensionsInput" placeholder="Ex: 6x6">
+                    <input type="text" class="sizePriceDetailsInput" id="size2PriceInput" placeholder="Ex: $50 / month">
+                    <br>
+                    <input type="text" class="sizePriceDetailsInput" id="size3DimensionsInput" placeholder="Ex: 6x6">
+                    <input type="text" class="sizePriceDetailsInput" id="size3PriceInput" placeholder="Ex: $50 / month">
+                    <br>
+                    <input type="text" class="sizePriceDetailsInput" id="size4DimensionsInput" placeholder="Ex: 6x6">
+                    <input type="text" class="sizePriceDetailsInput" id="size4PriceInput" placeholder="Ex: $50 / month">
+                    <br>
+                    <input type="text" class="sizePriceDetailsInput" id="size5DimensionsInput" placeholder="Ex: 6x6">
+                    <input type="text" class="sizePriceDetailsInput" id="size5PriceInput" placeholder="Ex: $50 / month">
+                    <br>
+                    <input type="text" class="sizePriceDetailsInput" id="size6DimensionsInput" placeholder="Ex: 6x6">
+                    <input type="text" class="sizePriceDetailsInput" id="size6PriceInput" placeholder="Ex: $50 / month">
+                </div>                
                 <br>
                 <button class="btn btn-md updateTextButton" (click)="saveSapParagraph()">Update</button>
                 <!-- After successful update, show confirmation -->
