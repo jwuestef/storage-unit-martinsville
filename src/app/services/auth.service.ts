@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 
@@ -11,7 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class AuthService {
     isAdmin: boolean = false;
 
-    constructor(private afAuth: AngularFireAuth) {
+    constructor(private afAuth: AngularFireAuth, private afd: AngularFireDatabase) {
         this.afAuth.authState.subscribe(res => {
             this.isAdmin = !!res;
         });
@@ -20,12 +21,22 @@ export class AuthService {
     async googleSignin() {
         const provider = new auth.GoogleAuthProvider();
         await this.afAuth.auth.signInWithPopup(provider);
-        window.location.reload(true)
+        // Get whitelist from database
+        this.afd.database.ref('/adminWhitelist').once('value').then(adminsAsObject => {
+            const userId = this.afAuth.auth.currentUser.uid;
+            if (adminsAsObject.val()[userId] !== undefined) {
+                window.location.reload(true);
+            } else {
+                alert('You do not have permission to access the administrator portal.');
+                this.logout();
+            }
+        });
     }
 
     logout() {
-        this.afAuth.auth.signOut();
-        window.location.reload(true)
+        this.afAuth.auth.signOut().then( () => {
+            window.location.reload(true)
+        });
     }
 
 }
