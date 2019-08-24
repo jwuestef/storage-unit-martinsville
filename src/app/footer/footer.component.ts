@@ -24,25 +24,36 @@ export class FooterComponent {
 
 
     constructor(private contentService: ContentService, public authService: AuthService, public sanitizer: DomSanitizer) {
-        // Pull content from Firebase and load it into the page content
-        this.contentService.getPageContent('siteOptions').then(pageContent => {
-            // Set the paragraph contents
-            this.facebookLinkDisplayed = pageContent['footerFacebookLink'];
-            this.mapLinkDisplayed = pageContent['footerMapLink'];
-            this.facebookLink = pageContent['footerFacebookLink']
-            this.mapLink = this.sanitizer.bypassSecurityTrustResourceUrl(pageContent['footerMapLink'])
-
-            $('#phoneNumberParagraph').html(pageContent['footerPhoneNumberParagraph']);
-            $('#addressParagraph').html(pageContent['footerAddressParagraph']);
-
-            if (this.authService.isAdmin) {
-                // If they're an admin, set the content of paragraph editors
-                setTimeout(() => {
-                    tinymce.get('phoneNumberParagraphEditor').setContent(pageContent['footerPhoneNumberParagraph']);
-                    tinymce.get('addressParagraphEditor').setContent(pageContent['footerAddressParagraph']);
-                }, 100)
-            }
+        // Pull content from the packaged-up-with-the-site JSON file - used to immediately populate the page
+        this.contentService.getInitialContent('siteOptions').then(initialContent => {
+            this.handlePageContent(initialContent)
         })
+        // Pull updated content from Firebase and load it into the page content
+        this.contentService.getPageContent('siteOptions').then(finalContent => {
+            this.handlePageContent(finalContent)
+        })
+    }
+
+
+
+    // Regardless of how the data was obtained, show the content on the page
+    handlePageContent(pageContent) {
+        // Set the paragraph contents
+        this.facebookLinkDisplayed = pageContent['footerFacebookLink'];
+        this.mapLinkDisplayed = pageContent['footerMapLink'];
+        this.facebookLink = pageContent['footerFacebookLink']
+        this.mapLink = this.sanitizer.bypassSecurityTrustResourceUrl(pageContent['footerMapLink'])
+
+        $('#phoneNumberParagraph').html(pageContent['footerPhoneNumberParagraph']);
+        $('#addressParagraph').html(pageContent['footerAddressParagraph']);
+
+        if (this.authService.isAdmin) {
+            // If they're an admin, set the content of paragraph editors
+            setTimeout(() => {
+                tinymce.get('phoneNumberParagraphEditor').setContent(pageContent['footerPhoneNumberParagraph']);
+                tinymce.get('addressParagraphEditor').setContent(pageContent['footerAddressParagraph']);
+            }, 100)
+        }
     }
 
 

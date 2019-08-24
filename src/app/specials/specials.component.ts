@@ -24,20 +24,31 @@ export class SpecialsComponent {
 
 
     constructor(private contentService: ContentService, public authService: AuthService) {
-        // Pull content from Firebase and load it into the page content
-        this.contentService.getPageContent('specialsPage').then(pageContent => {
-            // Set the paragraph contents
-            $('#specialsParagraph').html(pageContent['specialsParagraph']);
-            // Set the image properties
-            this.specialsImage1Src = pageContent['image1Src'];
-            this.specialsImage1Desc = pageContent['image1Desc'];
-            if (this.authService.isAdmin) {
-                // If they're an admin, set the content of paragraph editors
-                setTimeout(() => {
-                    tinymce.get('specialsParagraphEditor').setContent(pageContent['specialsParagraph']);
-                }, 100)
-            }
+        // Pull content from the packaged-up-with-the-site JSON file - used to immediately populate the page
+        this.contentService.getInitialContent('specialsPage').then(initialContent => {
+            this.handlePageContent(initialContent)
         })
+        // Pull updated content from Firebase and load it into the page content
+        this.contentService.getPageContent('specialsPage').then(finalContent => {
+            this.handlePageContent(finalContent)
+        })
+    }
+    
+    
+    
+    // Regardless of how the data was obtained, show the content on the page
+    handlePageContent(pageContent) {
+        // Set the paragraph contents
+        $('#specialsParagraph').html(pageContent['specialsParagraph']);
+        // Set the image properties
+        this.specialsImage1Src = pageContent['image1Src'];
+        this.specialsImage1Desc = pageContent['image1Desc'];
+        if (this.authService.isAdmin) {
+            // If they're an admin, set the content of paragraph editors
+            setTimeout(() => {
+                tinymce.get('specialsParagraphEditor').setContent(pageContent['specialsParagraph']);
+            }, 100)
+        }
     }
 
 

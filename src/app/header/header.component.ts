@@ -30,15 +30,26 @@ export class HeaderComponent implements OnInit {
 
 
     constructor(private contentService: ContentService, public authService: AuthService) {
-        // Pull content from Firebase and load it into the page content
-        this.contentService.getPageContent('siteOptions').then(pageContent => {
-            // Set the image properties
-            this.headerImageSrc = pageContent['headerImageSrc'];
-            this.headerImageDesc = pageContent['headerImageDesc'];
-            this.backgroundImageSrc = pageContent['backgroundImageSrc'];
-            this.backgroundImageDesc = pageContent['backgroundImageDesc'];
-            $('body').css('background', `url(${this.backgroundImageSrc}) no-repeat center center fixed`);
+        // Pull content from the packaged-up-with-the-site JSON file - used to immediately populate the page
+        this.contentService.getInitialContent('siteOptions').then(initialContent => {
+            this.handlePageContent(initialContent)
         })
+        // Pull updated content from Firebase and load it into the page content
+        this.contentService.getPageContent('siteOptions').then(finalContent => {
+            this.handlePageContent(finalContent)
+        })
+    }
+    
+    
+    
+    // Regardless of how the data was obtained, show the content on the page
+    handlePageContent(pageContent) {
+        // Set the image properties
+        this.headerImageSrc = pageContent['headerImageSrc'];
+        this.headerImageDesc = pageContent['headerImageDesc'];
+        this.backgroundImageSrc = pageContent['backgroundImageSrc'];
+        this.backgroundImageDesc = pageContent['backgroundImageDesc'];
+        $('body').css('background', `url(${this.backgroundImageSrc}) no-repeat center center fixed`);
     }
 
 

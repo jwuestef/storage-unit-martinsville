@@ -1,0 +1,60 @@
+{
+    "contactPage" : {
+      "contactParagraph" : "<p style=\"text-align: center;\"><span style=\"text-decoration: underline;\"><strong>765-346-0234</strong></span></p>\n<p>&nbsp;</p>\n<p>Please call during the day-time hours of 9-5 Mon-Sat for questions and/or to set up an appointment for us to meet.</p>\n<p>&nbsp;</p>\n<p>You can also visit our Facebook page to post a question or private message us. You can find our page by <a title=\"Facebook page\" href=\"https://www.facebook.com/groups/371561990265536/\" target=\"_blank\" rel=\"noopener\">clicking here</a> or by searching for \"The Storage Unit\" on Facebook.com.</p>\n<p>&nbsp;</p>\n<p>Lastly, if you want to reach us through this website, fill out this form and our office will contact you ASAP.</p>"
+    },
+    "homePage" : {
+      "homeImageDesc" : "View from road",
+      "homeImageSrc" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/homePage%2FhomeImage%2FIMG_1613.jpg?alt=media&token=69907472-a933-4136-bd68-2928e12da50a",
+      "homeParagraph" : "<p>We are a new and locally owned family business available to meet your storage needs! We are conveniently located near State Road 37, yet secluded from heavy traffic. We offer reasonable prices, and we are available Mon-Sat to meet you and make sure your storage experience goes smoothly. We rent by the month only, and accept cash or check.</p>"
+    },
+    "locationPage" : {
+      "directions1" : "<p><span style=\"text-decoration: underline;\"><strong>Directions from Bloomington:</strong></span></p>\n<p style=\"padding-left: 60px;\">Go north on I-69 until you reach Martinsville, where it turns into State Road 37. Turn right at Industrial Drive and the storage units will be on the right side of the road.</p>",
+      "directions2" : "<p><span style=\"text-decoration: underline;\"><strong>Directions from Indianapolis:</strong></span></p>\n<p style=\"padding-left: 60px;\">Go south on State Road 37 until you reach Martinsville. Once passing through, before the Ohio Street traffic light, turn left onto Industrial Drive. The storage units will be on the right side of the road.</p>",
+      "locationParagraph" : "<p style=\"text-align: center; line-height: 0.5rem;\">67 Industrial Drive</p>\n<p style=\"text-align: center;\">Martinsville, IN 46151</p>\n<p>We are within city limits and are within 1 mile of Kroger and Walmart.</p>",
+      "mapLink" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20744.521072337273!2d-86.427177791081!3d39.42784847989706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDI0JzMzLjkiTiA4NsKwMjQnNTcuOCJX!5e0!3m2!1sen!2sus!4v1556392848872!5m2!1sen!2sus"
+    },
+    "siteOptions" : {
+      "backgroundImageDesc" : "Clear Blue Sky",
+      "backgroundImageSrc" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/siteOptions%2FbackgroundImage%2FClear%20Blue%20Sky.jpeg?alt=media&token=5b9a2940-1959-4535-86e1-94883887ff51",
+      "footerAddressParagraph" : "<p>67 Industrial Drive</p>\n<p>Martinsville, IN 46151</p>",
+      "footerFacebookLink" : "https://www.facebook.com/groups/371561990265536/",
+      "footerMapLink" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20744.521072337273!2d-86.427177791081!3d39.42784847989706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDI0JzMzLjkiTiA4NsKwMjQnNTcuOCJX!5e0!3m2!1sen!2sus!4v1556392848872!5m2!1sen!2sus",
+      "footerPhoneNumberParagraph" : "<p>765-346-0234</p>",
+      "headerImageDesc" : "The Storage Unit",
+      "headerImageSrc" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/siteOptions%2FheaderImage%2FSignPhotoTransparent.png?alt=media&token=648606ba-86ad-4969-bb8c-53ef0f4f141c"
+    },
+    "sizesAndPricingPage" : {
+      "image1Desc" : "6x6",
+      "image1Src" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/sizesAndPricingPage%2Fimage1%2F6x6%20Image.jpg?alt=media&token=50c19d1e-8e01-4810-a5a3-0da8d3d8b741",
+      "image2Desc" : "6x10",
+      "image2Src" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/sizesAndPricingPage%2Fimage2%2F6x10%20Image.jpg?alt=media&token=c606a776-e072-4459-8034-0d8de7db95f6",
+      "image3Desc" : "10x12",
+      "image3Src" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/sizesAndPricingPage%2Fimage3%2F10x12%20Image.jpg?alt=media&token=45e4adb0-274e-40b2-9310-801759a543e4",
+      "image4Desc" : "10x24",
+      "image4Src" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/sizesAndPricingPage%2Fimage4%2F10x24%20Image.jpg?alt=media&token=c50a89f8-83fa-4caf-a544-4a5402af2b25",
+      "image5Desc" : "",
+      "image5Src" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/sizesAndPricingPage%2Fimage5%2F12x24.png?alt=media&token=c8401949-360d-4294-af21-d0176ad08210",
+      "image6Desc" : "",
+      "image6Src" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/sizesAndPricingPage%2Fimage6%2F24x24.png?alt=media&token=dfb5ea81-18f5-4c25-be84-f39167fa01c1",
+      "sapParagraph" : {
+        "size1Dimensions" : "6x6",
+        "size1Price" : "$40 / month",
+        "size2Dimensions" : "6x10",
+        "size2Price" : "$50 / month",
+        "size3Dimensions" : "10x12",
+        "size3Price" : "$70 / month",
+        "size4Dimensions" : "10x24",
+        "size4Price" : "$110 / month",
+        "size5Dimensions" : "",
+        "size5Price" : "",
+        "size6Dimensions" : "",
+        "size6Price" : ""
+      }
+    },
+    "specialsPage" : {
+      "image1Desc" : "Save money!",
+      "image1Src" : "https://firebasestorage.googleapis.com/v0/b/storage-unit-martinsville.appspot.com/o/specialsPage%2Fimage1%2Fmoney-bags.png?alt=media&token=ead0a441-128a-4215-9c9d-3032430b2d2b",
+      "specialsParagraph" : "<p><span style=\"text-decoration: underline;\"><strong>Long Term Renting:</strong></span></p>\n<p style=\"padding-left: 30px;\">If you plan on renting from us for at least 2 years.</p>\n<p style=\"padding-left: 30px;\">&nbsp;</p>\n<p style=\"padding-left: 30px;\">After your 2-year anniversary, the next month after each year rented will be rent free. Call us with any questions.</p>"
+    }
+  }
+  

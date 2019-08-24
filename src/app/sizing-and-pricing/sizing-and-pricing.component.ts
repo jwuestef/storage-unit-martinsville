@@ -61,52 +61,63 @@ export class SizingAndPricingComponent {
 
 
     constructor(private contentService: ContentService, public authService: AuthService) {
-        // Pull content from Firebase and load it into the page content
-        this.contentService.getPageContent('sizesAndPricingPage').then(pageContent => {
-            // Set the paragraph contents
-            this.size1Dimensions = pageContent['sapParagraph']['size1Dimensions'];
-            this.size2Dimensions = pageContent['sapParagraph']['size2Dimensions'];
-            this.size3Dimensions = pageContent['sapParagraph']['size3Dimensions'];
-            this.size4Dimensions = pageContent['sapParagraph']['size4Dimensions'];
-            this.size5Dimensions = pageContent['sapParagraph']['size5Dimensions'];
-            this.size6Dimensions = pageContent['sapParagraph']['size6Dimensions'];
-            this.size1Price = pageContent['sapParagraph']['size1Price'];
-            this.size2Price = pageContent['sapParagraph']['size2Price'];
-            this.size3Price = pageContent['sapParagraph']['size3Price'];
-            this.size4Price = pageContent['sapParagraph']['size4Price'];
-            this.size5Price = pageContent['sapParagraph']['size5Price'];
-            this.size6Price = pageContent['sapParagraph']['size6Price'];
-            // Set the image properties
-            this.sapImage1Src = pageContent['image1Src'];
-            this.sapImage2Src = pageContent['image2Src'];
-            this.sapImage3Src = pageContent['image3Src'];
-            this.sapImage4Src = pageContent['image4Src'];
-            this.sapImage5Src = pageContent['image5Src'];
-            this.sapImage6Src = pageContent['image6Src'];
-            this.sapImage1Desc = pageContent['image1Desc'];
-            this.sapImage2Desc = pageContent['image2Desc'];
-            this.sapImage3Desc = pageContent['image3Desc'];
-            this.sapImage4Desc = pageContent['image4Desc'];
-            this.sapImage5Desc = pageContent['image5Desc'];
-            this.sapImage6Desc = pageContent['image6Desc'];
-            if (this.authService.isAdmin) {
-                // If they're an admin, set the content of paragraph editors
-                setTimeout(() => {
-                    document.getElementById('size1DimensionsInput')['value'] = pageContent['sapParagraph']['size1Dimensions'];
-                    document.getElementById('size2DimensionsInput')['value'] = pageContent['sapParagraph']['size2Dimensions'];
-                    document.getElementById('size3DimensionsInput')['value'] = pageContent['sapParagraph']['size3Dimensions'];
-                    document.getElementById('size4DimensionsInput')['value'] = pageContent['sapParagraph']['size4Dimensions'];
-                    document.getElementById('size5DimensionsInput')['value'] = pageContent['sapParagraph']['size5Dimensions'];
-                    document.getElementById('size6DimensionsInput')['value'] = pageContent['sapParagraph']['size6Dimensions'];
-                    document.getElementById('size1PriceInput')['value'] = pageContent['sapParagraph']['size1Price'];
-                    document.getElementById('size2PriceInput')['value'] = pageContent['sapParagraph']['size2Price'];
-                    document.getElementById('size3PriceInput')['value'] = pageContent['sapParagraph']['size3Price'];
-                    document.getElementById('size4PriceInput')['value'] = pageContent['sapParagraph']['size4Price'];
-                    document.getElementById('size5PriceInput')['value'] = pageContent['sapParagraph']['size5Price'];
-                    document.getElementById('size6PriceInput')['value'] = pageContent['sapParagraph']['size6Price'];
-                }, 100)
-            }
+        // Pull content from the packaged-up-with-the-site JSON file - used to immediately populate the page
+        this.contentService.getInitialContent('sizesAndPricingPage').then(initialContent => {
+            this.handlePageContent(initialContent)
         })
+        // Pull updated content from Firebase and load it into the page content
+        this.contentService.getPageContent('sizesAndPricingPage').then(finalContent => {
+            this.handlePageContent(finalContent)
+        })
+    }
+    
+    
+    
+    // Regardless of how the data was obtained, show the content on the page
+    handlePageContent(pageContent) {
+        // Set the paragraph contents
+        this.size1Dimensions = pageContent['sapParagraph']['size1Dimensions'];
+        this.size2Dimensions = pageContent['sapParagraph']['size2Dimensions'];
+        this.size3Dimensions = pageContent['sapParagraph']['size3Dimensions'];
+        this.size4Dimensions = pageContent['sapParagraph']['size4Dimensions'];
+        this.size5Dimensions = pageContent['sapParagraph']['size5Dimensions'];
+        this.size6Dimensions = pageContent['sapParagraph']['size6Dimensions'];
+        this.size1Price = pageContent['sapParagraph']['size1Price'];
+        this.size2Price = pageContent['sapParagraph']['size2Price'];
+        this.size3Price = pageContent['sapParagraph']['size3Price'];
+        this.size4Price = pageContent['sapParagraph']['size4Price'];
+        this.size5Price = pageContent['sapParagraph']['size5Price'];
+        this.size6Price = pageContent['sapParagraph']['size6Price'];
+        // Set the image properties
+        this.sapImage1Src = pageContent['image1Src'];
+        this.sapImage2Src = pageContent['image2Src'];
+        this.sapImage3Src = pageContent['image3Src'];
+        this.sapImage4Src = pageContent['image4Src'];
+        this.sapImage5Src = pageContent['image5Src'];
+        this.sapImage6Src = pageContent['image6Src'];
+        this.sapImage1Desc = pageContent['image1Desc'];
+        this.sapImage2Desc = pageContent['image2Desc'];
+        this.sapImage3Desc = pageContent['image3Desc'];
+        this.sapImage4Desc = pageContent['image4Desc'];
+        this.sapImage5Desc = pageContent['image5Desc'];
+        this.sapImage6Desc = pageContent['image6Desc'];
+        if (this.authService.isAdmin) {
+            // If they're an admin, set the content of paragraph editors
+            setTimeout(() => {
+                document.getElementById('size1DimensionsInput')['value'] = pageContent['sapParagraph']['size1Dimensions'];
+                document.getElementById('size2DimensionsInput')['value'] = pageContent['sapParagraph']['size2Dimensions'];
+                document.getElementById('size3DimensionsInput')['value'] = pageContent['sapParagraph']['size3Dimensions'];
+                document.getElementById('size4DimensionsInput')['value'] = pageContent['sapParagraph']['size4Dimensions'];
+                document.getElementById('size5DimensionsInput')['value'] = pageContent['sapParagraph']['size5Dimensions'];
+                document.getElementById('size6DimensionsInput')['value'] = pageContent['sapParagraph']['size6Dimensions'];
+                document.getElementById('size1PriceInput')['value'] = pageContent['sapParagraph']['size1Price'];
+                document.getElementById('size2PriceInput')['value'] = pageContent['sapParagraph']['size2Price'];
+                document.getElementById('size3PriceInput')['value'] = pageContent['sapParagraph']['size3Price'];
+                document.getElementById('size4PriceInput')['value'] = pageContent['sapParagraph']['size4Price'];
+                document.getElementById('size5PriceInput')['value'] = pageContent['sapParagraph']['size5Price'];
+                document.getElementById('size6PriceInput')['value'] = pageContent['sapParagraph']['size6Price'];
+            }, 100)
+        }
     }
 
 

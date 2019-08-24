@@ -22,17 +22,28 @@ export class ContactComponent {
 
     
     constructor(private contentService: ContentService, public authService: AuthService, private http: HttpClient) {
-        // Pull content from Firebase and load it into the page content
-        this.contentService.getPageContent('contactPage').then(pageContent => {
-            // Set the paragraph contents
-            $('#contactParagraph').html(pageContent['contactParagraph']);
-            if (this.authService.isAdmin) {
-                // If they're an admin, set the content of paragraph editors
-                setTimeout(() => {
-                    tinymce.get('contactParagraphEditor').setContent(pageContent['contactParagraph']);
-                }, 100)
-            }
+        // Pull content from the packaged-up-with-the-site JSON file - used to immediately populate the page
+        this.contentService.getInitialContent('contactPage').then(initialContent => {
+            this.handlePageContent(initialContent)
         })
+        // Pull updated content from Firebase and load it into the page content
+        this.contentService.getPageContent('contactPage').then(finalContent => {
+            this.handlePageContent(finalContent)
+        })
+    }
+
+
+
+    // Regardless of how the data was obtained, show the content on the page
+    handlePageContent(pageContent) {
+        // Set the paragraph contents
+        $('#contactParagraph').html(pageContent['contactParagraph']);
+        if (this.authService.isAdmin) {
+            // If they're an admin, set the content of paragraph editors
+            setTimeout(() => {
+                tinymce.get('contactParagraphEditor').setContent(pageContent['contactParagraph']);
+            }, 100)
+        }
     }
 
 

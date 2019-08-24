@@ -22,23 +22,34 @@ export class LocationComponent {
 
 
     constructor(private contentService: ContentService, public authService: AuthService, public sanitizer: DomSanitizer) {
-        // Pull content from Firebase and load it into the page content
-        this.contentService.getPageContent('locationPage').then(pageContent => {
-            // Set the paragraph contents
-            this.mapLinkDisplayed = pageContent['mapLink'];
-            this.mapLink = this.sanitizer.bypassSecurityTrustResourceUrl(pageContent['mapLink'])
-            $('#locationParagraph').html(pageContent['locationParagraph']);
-            $('#directions1').html(pageContent['directions1']);
-            $('#directions2').html(pageContent['directions2']);
-            if (this.authService.isAdmin) {
-                // If they're an admin, set the content of paragraph editors
-                setTimeout(() => {
-                    tinymce.get('locationParagraphEditor').setContent(pageContent['locationParagraph']);
-                    tinymce.get('directions1Editor').setContent(pageContent['directions1']);
-                    tinymce.get('directions2Editor').setContent(pageContent['directions2']);
-                }, 100)
-            }
+        // Pull content from the packaged-up-with-the-site JSON file - used to immediately populate the page
+        this.contentService.getInitialContent('locationPage').then(initialContent => {
+            this.handlePageContent(initialContent)
         })
+        // Pull updated content from Firebase and load it into the page content
+        this.contentService.getPageContent('locationPage').then(finalContent => {
+            this.handlePageContent(finalContent)
+        })
+    }
+    
+    
+    
+    // Regardless of how the data was obtained, show the content on the page
+    handlePageContent(pageContent) {
+        // Set the paragraph contents
+        this.mapLinkDisplayed = pageContent['mapLink'];
+        this.mapLink = this.sanitizer.bypassSecurityTrustResourceUrl(pageContent['mapLink'])
+        $('#locationParagraph').html(pageContent['locationParagraph']);
+        $('#directions1').html(pageContent['directions1']);
+        $('#directions2').html(pageContent['directions2']);
+        if (this.authService.isAdmin) {
+            // If they're an admin, set the content of paragraph editors
+            setTimeout(() => {
+                tinymce.get('locationParagraphEditor').setContent(pageContent['locationParagraph']);
+                tinymce.get('directions1Editor').setContent(pageContent['directions1']);
+                tinymce.get('directions2Editor').setContent(pageContent['directions2']);
+            }, 100)
+        }
     }
 
 

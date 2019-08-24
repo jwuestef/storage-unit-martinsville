@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 import { Image } from './image';
+import * as originalContent from './originalContent.json';
 
 
 
@@ -22,6 +23,18 @@ export class ContentService {
 
     // The contructor function runs automatically on service load, each and every time it's called
     constructor(public afd: AngularFireDatabase, private afs: AngularFireStorage) { }
+
+
+
+    getInitialContent(pageName) {
+        return new Promise( (resolve, reject) => {
+            if (!originalContent || !originalContent["default"] || !originalContent["default"][pageName]) {
+                resolve({})
+            } else {
+                resolve(originalContent["default"][pageName]);
+            }
+        })
+    }
 
 
 
@@ -48,6 +61,7 @@ export class ContentService {
 
 
 
+    // Upload a file to storage
     uploadFile(pageName, whichElement, upload: Image) {
         return new Promise((resolve, reject) => {
             const _filePath = `${pageName}/${whichElement}/${upload.file.name}`;

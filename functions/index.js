@@ -36,6 +36,12 @@ const mailTransport = nodemailer.createTransport({
 
 // Sends an email to our Gmail account when someone submits the Contact Us form
 exports.sendContactMessage = functions.https.onRequest((req, res) => {
+    // Ensure message contents are saved in the log
+    console.log(`-----Message on ${new Date().toString()}-----`)
+    console.log(`From: ${req.body.contactRequestName}`)
+    console.log(`Phone: ${req.body.contactRequestPhone}`)
+    console.log(`Message: ${req.body.contactRequestMessage}`)
+    console.log(`-----End Message-----`)
     // Initialize the mailOptions variable
     const mailOptions = {
         from: gmailEmail,
@@ -45,9 +51,15 @@ exports.sendContactMessage = functions.https.onRequest((req, res) => {
     mailOptions.subject = 'Contact form submitted';
     mailOptions.text = `
     New contact form submission:
-      Name: ${req.body.contactRequestName}
-      Phone: ${req.body.contactRequestPhone}
-      Message: ${req.body.contactRequestMessage}
+    
+    Name: 
+    ${req.body.contactRequestName}
+
+    Phone: 
+    ${req.body.contactRequestPhone}
+      
+    Message: 
+    ${req.body.contactRequestMessage}
   `;
     // Actually send the email, we need to reply with JSON
     return mailTransport.sendMail(mailOptions).then(() => {

@@ -24,20 +24,31 @@ export class HomeComponent {
 
 
     constructor(private contentService: ContentService, public authService: AuthService) {
-        // Pull content from Firebase and load it into the page content
-        this.contentService.getPageContent('homePage').then(pageContent => {
-            // Set the paragraph contents
-            $('#homeParagraph').html(pageContent['homeParagraph']);
-            // Set the image properties
-            this.homeImage1Src = pageContent['homeImageSrc'];
-            this.homeImage1Desc = pageContent['homeImageDesc'];
-            if (this.authService.isAdmin) {
-                // If they're an admin, set the content of paragraph editors
-                setTimeout(() => {
-                    tinymce.get('homeParagraphEditor').setContent(pageContent['homeParagraph']);
-                }, 100)
-            }
+        // Pull content from the packaged-up-with-the-site JSON file - used to immediately populate the page
+        this.contentService.getInitialContent('homePage').then(initialContent => {
+            this.handlePageContent(initialContent)
         })
+        // Pull updated content from Firebase and load it into the page content
+        this.contentService.getPageContent('homePage').then(finalContent => {
+            this.handlePageContent(finalContent)
+        })
+    }
+
+
+
+    // Regardless of how the data was obtained, show the content on the page
+    handlePageContent(pageContent) {
+        // Set the paragraph contents
+        $('#homeParagraph').html(pageContent['homeParagraph']);
+        // Set the image properties
+        this.homeImage1Src = pageContent['homeImageSrc'];
+        this.homeImage1Desc = pageContent['homeImageDesc'];
+        if (this.authService.isAdmin) {
+            // If they're an admin, set the content of paragraph editors
+            setTimeout(() => {
+                tinymce.get('homeParagraphEditor').setContent(pageContent['homeParagraph']);
+            }, 100)
+        }
     }
 
 
