@@ -28,7 +28,7 @@
     "core-js": "^2.5.4",
     "firebase": "^5.10.0",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.3.3",
     "tinymce": "^4.6.7",
